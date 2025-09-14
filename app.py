@@ -283,9 +283,14 @@ def main():
         )
         fig_revenue.update_traces(line_color='#3b82f6', line_width=3)
         fig_revenue.update_layout(
-            plot_bgcolor='rgba(0,0,0,0)',
-            paper_bgcolor='rgba(0,0,0,0)',
-        )
+    plot_bgcolor='rgba(0,0,0,0)',
+    paper_bgcolor='rgba(0,0,0,0)',
+    transition_duration=500,
+    hovermode="x unified",
+    dragmode="pan",
+    xaxis=dict(rangeslider=dict(visible=True))  # smooth zoom
+)
+
         st.plotly_chart(fig_revenue, use_container_width=True)
     
     with col2:
@@ -315,14 +320,19 @@ def main():
         ))
         
         fig_marketing.update_layout(
-            title='Marketing Spend vs Attributed Revenue',
-            xaxis_title='Date',
-            yaxis=dict(title='Ad Spend ($)', side='left'),
-            yaxis2=dict(title='Attributed Revenue ($)', side='right', overlaying='y'),
-            plot_bgcolor='rgba(0,0,0,0)',
-            paper_bgcolor='rgba(0,0,0,0)',
-            legend=dict(x=0, y=1)
-        )
+    title='Marketing Spend vs Attributed Revenue',
+    xaxis_title='Date',
+    yaxis=dict(title='Ad Spend ($)', side='left'),
+    yaxis2=dict(title='Attributed Revenue ($)', side='right', overlaying='y'),
+    plot_bgcolor='rgba(0,0,0,0)',
+    paper_bgcolor='rgba(0,0,0,0)',
+    legend=dict(x=0, y=1),
+    transition_duration=500,
+    hovermode="x unified",
+    dragmode="pan",
+    xaxis=dict(rangeslider=dict(visible=True))
+)
+
         st.plotly_chart(fig_marketing, use_container_width=True)
     
     # Platform Performance Analysis
